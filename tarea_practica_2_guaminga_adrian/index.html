@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel de 10 Imágenes - Práctica 2</title>
+    <style>
+        /* Estilos base para el cumplimiento de la rúbrica (Responsividad) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 800px; /* Tamaño optimizado */
+            width: 95%;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain; /* Para que tus fotos descargadas no se deformen */
+            display: block;
+        }
+
+        /* Navegación */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            color: gold;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s;
+            background: rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .next { right: 0; }
+        .prev:hover, .next:hover { background: rgba(255,255,255,0.2); }
+
+        .numbertext {
+            background: rgba(0,0,0,0.6);
+            font-size: 14px;
+            padding: 10px 15px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Galería Personalizada - Carrusel</h1>
+
+    <div class="carousel-container">
+        <!-- Generación de los 10 espacios para tus fotos -->
+        <div class="carousel-slide">
+            <div class="numbertext">1 / 10</div>
+            <img src="img/foto1.jpg" alt="Imagen 1">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">2 / 10</div>
+            <img src="img/foto2.jpg" alt="Imagen 2">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">3 / 10</div>
+            <img src="img/foto3.jpg" alt="Imagen 3">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">4 / 10</div>
+            <img src="img/foto4.jpg" alt="Imagen 4">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">5 / 10</div>
+            <img src="img/foto5.jpg" alt="Imagen 5">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">6 / 10</div>
+            <img src="img/foto6.jpg" alt="Imagen 6">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">7 / 10</div>
+            <img src="img/foto7.jpg" alt="Imagen 7">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">8 / 10</div>
+            <img src="img/foto8.jpg" alt="Imagen 8">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">9 / 10</div>
+            <img src="img/foto9.jpg" alt="Imagen 9">
+        </div>
+        <div class="carousel-slide">
+            <div class="numbertext">10 / 10</div>
+            <img src="img/foto10.jpg" alt="Imagen 10">
+        </div>
+
+        <!-- Botones -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            if (n > slides.length) { slideIndex = 1 }    
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+    </script>
+</body>
+</html>
